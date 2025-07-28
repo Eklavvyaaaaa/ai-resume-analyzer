@@ -1,54 +1,47 @@
-const ScoreCircle = ({ score = 75 }: { score: number }) => {
-    const radius = 40;
-    const stroke = 8;
-    const normalizedRadius = radius - stroke / 2;
-    const circumference = 2 * Math.PI * normalizedRadius;
-    const progress = score / 100;
-    const strokeDashoffset = circumference * (1 - progress);
+import {Link} from "react-router";
+import ScoreCircle from "~/components/ScoreCircle";
+import {useEffect, useState} from "react";
+import {usePuterStore} from "~/lib/puter";
+
+const ResumeCard = ({ resume: { id, companyName, jobTitle, feedback, imagePath } }: { resume: Resume }) => {
+    const { fs } = usePuterStore();
+    const [resumeUrl, setResumeUrl] = useState('');
+
+    useEffect(() => {
+        const loadResume = async () => {
+            const blob = await fs.read(imagePath);
+            if(!blob) return;
+            let url = URL.createObjectURL(blob);
+            setResumeUrl(url);
+        }
+
+        loadResume();
+    }, [imagePath]);
 
     return (
-        <div className="relative w-[100px] h-[100px]">
-            <svg
-                height="100%"
-                width="100%"
-                viewBox="0 0 100 100"
-                className="transform -rotate-90"
-            >
-                {/* Background circle */}
-                <circle
-                    cx="50"
-                    cy="50"
-                    r={normalizedRadius}
-                    stroke="#e5e7eb"
-                    strokeWidth={stroke}
-                    fill="transparent"
-                />
-                {/* Partial circle with gradient */}
-                <defs>
-                    <linearGradient id="grad" x1="1" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#FF97AD" />
-                        <stop offset="100%" stopColor="#5171FF" />
-                    </linearGradient>
-                </defs>
-                <circle
-                    cx="50"
-                    cy="50"
-                    r={normalizedRadius}
-                    stroke="url(#grad)"
-                    strokeWidth={stroke}
-                    fill="transparent"
-                    strokeDasharray={circumference}
-                    strokeDashoffset={strokeDashoffset}
-                    strokeLinecap="round"
-                />
-            </svg>
-
-            {/* Score and issues */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <span className="font-semibold text-sm">{`${score}/100`}</span>
+        <Link to={`/resume/${id}`} className="resume-card animate-in fade-in duration-1000">
+            <div className="resume-card-header">
+                <div className="flex flex-col gap-2">
+                    {companyName && <h2 className="!text-black font-bold break-words">{companyName}</h2>}
+                    {jobTitle && <h3 className="text-lg break-words text-gray-500">{jobTitle}</h3>}
+                    {!companyName && !jobTitle && <h2 className="!text-black font-bold">Resume</h2>}
+                </div>
+                <div className="flex-shrink-0">
+                    <ScoreCircle score={feedback.overallScore} />
+                </div>
             </div>
-        </div>
-    );
-};
-
-export default ScoreCircle;
+            {resumeUrl && (
+                <div className="gradient-border animate-in fade-in duration-1000">
+                    <div className="w-full h-full">
+                        <img
+                            src={resumeUrl}
+                            alt="resume"
+                            className="w-full h-[350px] max-sm:h-[200px] object-cover object-top"
+                        />
+                    </div>
+                </div>
+            )}
+        </Link>
+    )
+}
+export default ResumeCard

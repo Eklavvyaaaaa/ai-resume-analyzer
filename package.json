@@ -11,8 +11,14 @@
   "dependencies": {
     "@react-router/node": "^7.7.1",
     "@react-router/serve": "^7.7.1",
+    "@tailwindcss/line-clamp": "^0.4.4",
     "clsx": "^2.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "express": "^5.1.0",
+    "framer-motion": "^12.23.11",
     "isbot": "^5.1.27",
+    "node-fetch": "^3.3.2",
     "pdfjs-dist": "^5.3.93",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -32,5 +38,19 @@
     "typescript": "^5.8.3",
     "vite": "^6.3.3",
     "vite-tsconfig-paths": "^5.1.4"
-  }
+  },
+  "version": "1.0.0",
+  "description": "A modern, production-ready template for building full-stack React applications using React Router.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eklavvyaaaaa/ai-resume-analyzer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Eklavvyaaaaa/ai-resume-analyzer/issues"
+  },
+  "homepage": "https://github.com/Eklavvyaaaaa/ai-resume-analyzer#readme"
 }

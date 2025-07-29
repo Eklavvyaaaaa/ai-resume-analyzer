@@ -6,4 +6,5 @@ export default [
     route('/upload', 'routes/upload.tsx'),
     route('/resume/:id', 'routes/resume.tsx'),
     route('/wipe', 'routes/wipe.tsx'),
+    route('/Jobspage', 'routes/jobspage.tsx'), // This is your new route for the jobs page
 ] satisfies RouteConfig;

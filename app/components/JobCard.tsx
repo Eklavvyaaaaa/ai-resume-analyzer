@@ -115,5 +115,4 @@ const JobCard: React.FC<JobCardProps> = ({ job, onClick, onSave, saved, searchQu
         </div>
     );
 };
-
 export default JobCard;

@@ -1,8 +1,10 @@
 {
-  "homepage": "http://eklavvyaaaaa.github.io/ai-resume-analyzer",
   "name": "ai-resume-analyzer",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
+  "description": "A modern, production-ready template for building full-stack React applications using React Router.",
+  "main": "index.js",
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev",
@@ -43,18 +45,15 @@
     "vite": "^6.3.3",
     "vite-tsconfig-paths": "^5.1.4"
   },
-  "version": "1.0.0",
-  "description": "A modern, production-ready template for building full-stack React applications using React Router.",
-  "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Eklavvyaaaaa/ai-resume-analyzer.git"
+    "url": "https://github.com/Eklavvyaaaaa/ai-resume-analyzer.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/Eklavvyaaaaa/ai-resume-analyzer/issues"
   },
-  "homepage": "https://github.com/Eklavvyaaaaa/ai-resume-analyzer#readme"
+  "homepage": "http://eklavvyaaaaa.github.io/ai-resume-analyzer",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
